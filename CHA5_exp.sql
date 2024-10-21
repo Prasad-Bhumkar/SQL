@@ -1,9 +1,12 @@
+-- Retrieve the hire time for an employee with the last name 'Taylor'
 SELECT TO_CHAR(hire_date, 'hh:mi:ss') jointime
 FROM employees
 WHERE last_name='Taylor';
 
+-- Determine the quarter of the year for each employee's hire date
 SELECT 
     hire_date,
+    -- Use a CASE statement to determine the quarter based on the month
     CASE 
         WHEN hire_date LIKE '%JAN%' OR hire_date LIKE '%FEB%' OR hire_date LIKE '%MAR%' THEN 'Q1'
         WHEN hire_date LIKE '%APR%' OR hire_date LIKE '%MAY%' OR hire_date LIKE '%JUN%' THEN 'Q2'
@@ -13,5 +16,6 @@ SELECT
     END AS quarter
 FROM employees;
 
+-- Calculate the number of months since each employee's hire date
 SELECT hire_date,ROUND(MONTHS_BETWEEN(sysdate,hire_date)) "MONTHS" 
 FROM employees;

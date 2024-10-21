@@ -1,3 +1,4 @@
+-- question 1
 -- Create a table to store the count of employees reporting to each manager
 CREATE TABLE ManagerempCounts (
     manager_id NUMBER(10),  -- Unique identifier for the manager
@@ -26,3 +27,12 @@ INSERT INTO TopManager (
     )
     WHERE row_num = 1
 );
+
+
+-- question 3
+-- Increase the salary of employees with job_id containing 'ACCOUNT' by 15%
+UPDATE emp 
+SET salary = ((salary/100)*15)+salary 
+-- Filter employees with job_id containing 'ACCOUNT'
+WHERE job_id 
+LIKE '%ACCOUNT';
