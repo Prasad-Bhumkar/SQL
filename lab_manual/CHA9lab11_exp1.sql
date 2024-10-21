@@ -16,7 +16,7 @@ CREATE TABLE TopManager (
     manager_id NUMBER(10) PRIMARY KEY  -- Unique identifier for the top manager
 );
 
--- Populate the TopManager table with the manager having the most reports
+-- Populate the TopManager table with the manager having the highest report count
 INSERT INTO TopManager (
     SELECT manager_id
     FROM (
