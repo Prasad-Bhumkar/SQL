@@ -1,0 +1,143 @@
+This is my personal SQL cheat sheet. Let's begin.........
+
+## SQL Basics
+
+### SQL Syntax
+
+SQL syntax is case-insensitive, but it's a good practice to use uppercase for SQL commands and lowercase for table and column names.
+
+
+
+### SQL Commands
+| Command | Description |
+| --- | --- |
+| `SELECT` | Retrieves data from a database table. |
+| `FROM` | Specifies the tables to retrieve data from. |
+| `WHERE` | Filters data based on conditions. |
+| `AND` | Combines multiple conditions with a logical AND operator. |
+| `OR` | Combines multiple conditions with a logical OR operator. |
+| `NOT` | Negates a condition. |
+| `INSERT INTO` | Inserts new data into a database table. |
+| `UPDATE` | Modifies existing data in a database table. |
+| `DELETE` | Deletes data from a database table. |
+| `CREATE TABLE` | Creates a new database table. |
+| `DROP TABLE` | Deletes a database table. |
+| `ALTER TABLE` | Modifies the structure of a database table. |
+
+
+| Command | Description | Example |
+| --- | --- | --- |
+| `SELECT` | Retrieves data from a database table. | `SELECT * FROM customers;` |
+| `FROM` | Specifies the tables to retrieve data from. | `SELECT * FROM customers, orders;` |
+| `WHERE` | Filters data based on conditions. | `SELECT * FROM customers WHERE country='USA';` |
+| `AND` | Combines multiple conditions with a logical AND operator. | `SELECT * FROM customers WHERE country='USA' AND age>18;` |
+| `OR` | Combines multiple conditions with a logical OR operator. | `SELECT * FROM customers WHERE country='USA' OR country='Canada';` |
+| `NOT` | Negates a condition. | `SELECT * FROM customers WHERE NOT country='USA';` |
+| `INSERT INTO` | Inserts new data into a database table. | `INSERT INTO customers (name, email) VALUES ('John Doe', 'john@example.com');` |
+| `UPDATE` | Modifies existing data in a database table. | `UPDATE customers SET country='Canada' WHERE name='John Doe';` |
+| `DELETE` | Deletes data from a database table. | `DELETE FROM customers WHERE name='John Doe';` |
+| `CREATE TABLE` | Creates a new database table. | `CREATE TABLE orders (id INT, customer_id INT, order_date DATE);` |
+| `DROP TABLE` | Deletes a database table. | `DROP TABLE orders;` |
+| `ALTER TABLE` | Modifies the structure of a database table. | `ALTER TABLE customers ADD COLUMN phone VARCHAR(20);` |
+
+### SQL Data Types
+| Data Type | Description |
+| --- | --- |
+| `INT` | Whole numbers, e.g., 1, 2, 3. |
+| `VARCHAR` | Variable-length strings, e.g., 'hello', 'world'. |
+| `DATE` | Date values, e.g., '2022-01-01'. |
+| `TIME` | Time values, e.g., '12:00:00'. |
+| `TIMESTAMP` | Date and time values, e.g., '2022-01-01 12:00:00'. |
+| `BOOLEAN` | Boolean values, e.g., TRUE, FALSE. |
+
+
+| Data Type | Description | Example |
+| --- | --- | --- |
+| `INT` | Whole numbers, e.g., 1, 2, 3. | `id INT` |
+| `VARCHAR` | Variable-length strings, e.g., 'hello', 'world'. | `name VARCHAR(255)` |
+| `DATE` | Date values, e.g., '2022-01-01'. | `order_date DATE` |
+| `TIME` | Time values, e.g., '12:00:00'. | `order_time TIME` |
+| `TIMESTAMP` | Date and time values, e.g., '2022-01-01 12:00:00'. | `created_at TIMESTAMP` |
+| `BOOLEAN` | Boolean values, e.g., TRUE, FALSE. | `is_active BOOLEAN` |
+
+## SQL Queries
+
+### Basic Queries
+| Query | Description |
+| --- | --- |
+| `SELECT * FROM table_name;` | Retrieves all data from a table. |
+| `SELECT column1, column2 FROM table_name;` | Retrieves specific columns from a table. |
+| `SELECT * FROM table_name WHERE condition;` | Retrieves data from a table based on a condition. |
+| `SELECT * FROM table_name ORDER BY column_name;` | Retrieves data from a table in a specific order. |
+| `SELECT * FROM table_name LIMIT number;` | Retrieves a limited number of rows from a table. |
+
+
+| Query | Description | Example |
+| --- | --- | --- |
+| `SELECT * FROM table_name;` | Retrieves all data from a table. | `SELECT * FROM customers;` |
+| `SELECT column1, column2 FROM table_name;` | Retrieves specific columns from a table. | `SELECT name, email FROM customers;` |
+| `SELECT * FROM table_name WHERE condition;` | Retrieves data from a table based on a condition. | `SELECT * FROM customers WHERE country='USA';` |
+| `SELECT * FROM table_name ORDER BY column_name;` | Retrieves data from a table in a specific order. | `SELECT * FROM customers ORDER BY name;` |
+| `SELECT * FROM table_name LIMIT number;` | Retrieves a limited number of rows from a table. | `SELECT * FROM customers LIMIT 10;` |
+
+### Aggregate Functions
+| Function | Description |
+| --- | --- |
+| `SUM(column_name)` | Calculates the sum of a column. |
+| `AVG(column_name)` | Calculates the average of a column. |
+| `MAX(column_name)` | Retrieves the maximum value of a column. |
+| `MIN(column_name)` | Retrieves the minimum value of a column. |
+| `COUNT(column_name)` | Retrieves the number of rows in a table. |
+
+
+| Function | Description | Example |
+| --- | --- | --- |
+| `SUM(column_name)` | Calculates the sum of a column. | `SELECT SUM(total) FROM orders;` |
+| `AVG(column_name)` | Calculates the average of a column. | `SELECT AVG(total) FROM orders;` |
+| `MAX(column_name)` | Retrieves the maximum value of a column. | `SELECT MAX(total) FROM orders;` |
+| `MIN(column_name)` | Retrieves the minimum value of a column. | `SELECT MIN(total) FROM orders;` |
+| `COUNT(column_name)` | Retrieves the number of rows in a table. | `SELECT COUNT(*) FROM customers;` |
+
+### Joining Tables
+| Join Type | Description |
+| --- | --- |
+| `INNER JOIN` | Retrieves data from two tables where the join condition is met. |
+| `LEFT JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from the left table that do not have a match in the right table. |
+| `RIGHT JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from the right table that do not have a match in the left table. |
+| `FULL OUTER JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from both tables that do not have a match in the other table. |
+
+
+| Join Type | Description | Example |
+| --- | --- | --- |
+| `INNER JOIN` | Retrieves data from two tables where the join condition is met. | `SELECT * FROM customers INNER JOIN orders ON customers.id = orders.customer_id;` |
+| `LEFT JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from the left table that do not have a match in the right table. | `SELECT * FROM customers LEFT JOIN orders ON customers.id = orders.customer_id;` |
+| `RIGHT JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from the right table that do not have a match in the left table. | `SELECT * FROM customers RIGHT JOIN orders ON customers.id = orders.customer_id;` |
+| `FULL OUTER JOIN` | Retrieves data from two tables where the join condition is met, and also includes rows from both tables that do not have a match in the other table. | `SELECT * FROM customers FULL OUTER JOIN orders ON customers.id = orders.customer_id;` |
+
+### Subqueries
+| Subquery Type | Description |
+| --- | --- |
+| `IN` | Retrieves data from a table where the value is in the result set of a subquery. |
+| `EXISTS` | Retrieves data from a table where the subquery returns at least one row. |
+| `NOT EXISTS` | Retrieves data from a table where the subquery does not return any rows. |
+
+
+| Subquery Type | Description | Example |
+| --- | --- | --- |
+| `IN` | Retrieves data from a table where the value is in the result set of a subquery. | `SELECT * FROM customers WHERE id IN (SELECT customer_id FROM orders);` |
+| `EXISTS` | Retrieves data from a table where the subquery returns at least one row. | `SELECT * FROM customers WHERE EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);` |
+| `NOT EXISTS` | Retrieves data from a table where the subquery does not return any rows. | `SELECT * FROM customers WHERE NOT EXISTS (SELECT 1 FROM orders WHERE orders.customer_id = customers.id);` |
+
+### Indexing and Constraints
+| Index Type | Description |
+| --- | --- |
+| `PRIMARY KEY` | Uniquely identifies each row in a table. |
+| `FOREIGN KEY` | Establishes a relationship between two tables. |
+| `UNIQUE` | Ensures that each value in a column is unique. |
+| `INDEX` | Improves query performance by allowing the database to quickly locate data. |
+| Index Type | Description | Example |
+| --- | --- | --- |
+| `PRIMARY KEY` | Uniquely identifies each row in a table. | `CREATE TABLE customers (id INT PRIMARY KEY, name VARCHAR(255));` |
+| `FOREIGN KEY` | Establishes a relationship between two tables. | `CREATE TABLE orders (id INT, customer_id INT, FOREIGN KEY (customer_id) REFERENCES customers(id));` |
+| `UNIQUE` | Ensures that each value in a column is unique. | `CREATE TABLE customers (id INT, email VARCHAR(255) UNIQUE);` |
+| `INDEX` | Improves query performance by allowing the database to quickly locate data. | `CREATE INDEX idx_name ON customers (name);`
