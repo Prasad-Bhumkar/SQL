@@ -3,9 +3,11 @@
 select first_name,last_name,department_name 
 from employees natural join departments;
 
--------[2] Display list of region id region name and country name
+--[2] Display list of region id region name and country name
 --Using clause
-select region_id,region_name,country_name from regions join countries using (country_id);
+select region_id,region_name,country_name from regions join countries using (region_id);
+--other way
+select r.region_id,r.region_name,c.country_name from regions r join countries c on (r.region_id=c.region_id);
 
 --[3] Display department name city name as well as employee name
 --On clause
@@ -70,5 +72,5 @@ where m.last_name = 'King';
 select e.last_name,e.salary
 from employees e join departments d
 on(e.department_id=d.department_id)
-WHERE 
+WHERE salary > any (select salary from employees where department_id = 60);
 
