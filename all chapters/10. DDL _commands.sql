@@ -1,4 +1,6 @@
--- Question 1: Create a table named mydept to store department information
+-- Question 1: Create a table named mydept to store department information.
+-- This table will hold the department number and name.
+
 create table mydept (
     -- deptno is the primary key, uniquely identifying each department
     deptno number(7) constraint dptno_pk primary key,
@@ -8,7 +10,9 @@ create table mydept (
 -- Question 2: Use the desc command to display the structure of the mydept table
 desc mydept;
 
--- Question 3: Create a table named myemp1 to store employee information
+-- Question 3: Create a table named myemp1 to store employee information.
+-- This table will include employee ID, names, and department ID.
+
 CREATE TABLE myemp1 (
     -- empid is the primary key, uniquely identifying each employee
     empid number(7) CONSTRAINT eid_pk PRIMARY KEY,
@@ -40,7 +44,9 @@ desc myemp1;
 -- Question 9: Drop the firstname column from the myemp1 table
 alter table myemp1 drop (firstname);
 
--- Question 10: Create a table named logemp to store employee log information
+-- Question 10: Create a table named logemp to store employee log information.
+-- This table will track employee logs with relevant details.
+
 create table logemp(
     -- empid stores the employee ID, with a maximum length of 10 digits
     empid number(10),
